@@ -47,11 +47,10 @@ class Metropolis:
            
     def summary(self):
         samples = self.samples
-        mean = sum(samples) / len(samples)
         sorted_samples = sorted(samples)
-        c025 = sorted_samples[int(len(samples) * 0.025)]
-        c975 = sorted_samples[int(len(samples) * 0.975)]
-        return {'mean': mean, 'c025': c025, 'c975': c975}
+        return {'mean': sum(samples) / len(samples),
+            'c025': sorted_samples[int(len(samples) * 0.025)],
+            'c975': sorted_samples[int(len(samples) * 0.975)]}
 
 class SignalDetection:
     def __init__(self, hits, misses, falseAlarms, correctRejections):
